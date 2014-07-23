@@ -5,13 +5,14 @@
 
 class objloader{
 
-// 
+// points for vertices of triangle
 struct point{
 	float x;
 	float y;
 	float z;
 };
 
+// element of list of points
 struct ptlistelement{
 	point A;
 	int position;
@@ -20,6 +21,8 @@ struct ptlistelement{
 };
 
 public:
+// triangle element for list of triangles. public for ease
+// of linked list traversal
 	struct triangle{
 		point A;
 		point B;
@@ -29,18 +32,21 @@ public:
 	};
 
 private:
+// assigned upon initialization
 	char filename[];
 
 public:
-
-	int size;
+// list of triangles defining object
 	triangle * list;
 
+// constructor
 	objloader(char fn[]);
+	
+// does all the work. builds the list of triangles
 	void build_list();
 
-
-
+private:
+// utility function
 	point getPoint(ptlistelement * head, int pos);
 };
 
